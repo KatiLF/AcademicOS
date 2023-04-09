@@ -2,19 +2,19 @@ import { useState } from 'react'
 import { supabase } from '../utils/supabase'
 
 export default function Login() {
-  const [username, setUsername] = useState('')
+  const [email, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
   const handleLogin = async (event) => {
     event.preventDefault()
     const { user, error } = await supabase.auth.signInWithPassword({
-       correo: username,
-       contrasena: password,
+       email: email,
+       password: password,
     })
     if (error) {
       console.log('Error:', error.message)
     } else {
-      console.log('Usuario:', user)
+      console.log('Funciono! Usuario:', email)
     }
   }
 
@@ -26,7 +26,7 @@ export default function Login() {
           Nombre de usuario:
           <input
             type="text"
-            value={username}
+            value={email}
             onChange={(event) => setUsername(event.target.value)}
           />
         </label>
