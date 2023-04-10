@@ -1,36 +1,32 @@
 import { useState } from 'react'
 import { supabase } from '../utils/supabase'
-import 'bootstrap/dist/css/bootstrap.min.css'
 
 export default function Login() {
-  const [username, setUsername] = useState('')
+  const [email, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
   const handleLogin = async (event) => {
     event.preventDefault()
     const { user, error } = await supabase.auth.signInWithPassword({
-       correo: username,
-       contrasena: password,
+       email: email,
+       password: password,
     })
     if (error) {
       console.log('Error:', error.message)
     } else {
-      console.log('Usuario:', user)
+      console.log('Funciono! Usuario:', email)
     }
   }
 
   return (
-    <div class='d-flex justify-content-center align-items-center bg-secondary p-5 rounded'>
+    <div>
+      <h1>Iniciar sesión</h1>
       <form onSubmit={handleLogin}>
-        <label class="display-5">
-          Iniciar Sesion
-        </label>
-        <br />
         <label>
           Nombre de usuario:
           <input
             type="text"
-            value={username}
+            value={email}
             onChange={(event) => setUsername(event.target.value)}
           />
         </label>
