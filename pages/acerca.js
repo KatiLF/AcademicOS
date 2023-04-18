@@ -23,30 +23,30 @@ export default function Acerca() {
     }, [])
     return (
     <>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container">
-          <a class="navbar-brand" href="#!"><img src="/Logouta.png" alt="logo UTA" id="logoUTA" height={40} width={30}></img></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                  <li class="nav-item"><a class="nav-link" href="Lobby">Inicio</a></li>
-                  <li class="nav-item"><a class="nav-link" href="Recursos">Recursos</a></li>
-                  <li class="nav-item"><a class="nav-link" href="acerca">Acerca de mi</a></li>
-                  <li class="nav-item"><a class="nav-link" onClick = {()=> supabase.auth.signOut()}>Cerrar Sesión</a></li>
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div className="container">
+          <a className="navbar-brand" href="#!"><img src="/Logouta.png" alt="logo UTA" id="logoUTA" height={40} width={30}></img></a>
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+                  <li className="nav-item"><a className="nav-link" href="Lobby">Inicio</a></li>
+                  <li className="nav-item"><a className="nav-link" href="Recursos">Recursos</a></li>
+                  <li className="nav-item"><a className="nav-link" href="acerca">Acerca de mi</a></li>
+                  <li className="nav-item"><a className="nav-link" onClick = {()=> supabase.auth.signOut()}>Cerrar Sesión</a></li>
               </ul>
           </div>
       </div>
      </nav>
 <main>
-<section class="py-5 bg-info">
-  <div class="container">
-    <div class="row">
-      <div class="col-12 col-md-6 text-center ">
+<section className="py-5 bg-info">
+  <div className="container">
+    <div className="row">
+      <div className="col-12 col-md-6 text-center ">
         <img ></img>
       </div>
-      <div class="col-12 col-md-6 text-center text-md-left align-self-md-center ">
-        <h1 class="display-4 font-weight-bold text-light">¿Con que objetivo?</h1> 
-        <p class="text-light text-center">El objetivo de su proyecto biblioteca es
+      <div className="col-12 col-md-6 text-center text-md-left align-self-md-center ">
+        <h1 className="display-4 font-weight-bold text-light">¿Con que objetivo?</h1> 
+        <p className="text-light text-center">El objetivo de su proyecto biblioteca es
            proporcionar a los estudiantes recursos y documentos que les
            permitan repasar y practicar lo aprendido en años anteriores.
            Esto se debe a que, a menudo, los estudiantes necesitan revisar 
@@ -56,15 +56,15 @@ export default function Acerca() {
     </div>
   </div>
 </section>
-<div class="bg-dark">.</div>
-<section class="py-4 bg-secondary text-center text-white">
+<div className="bg-dark">.</div>
+<section className="py-4 bg-secondary text-center text-white">
 
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
+  <div className="container">
+    <div className="row">
+      <div className="col-12">
         <img ></img>
-        <p class="h2">Sobre nosotros</p>
-        <p class="h4 font-italic">Un equipo conformado de estudiantes 
+        <p className="h2">Sobre nosotros</p>
+        <p className="h4 font-italic">Un equipo conformado de estudiantes 
           para innovar ideas que puedan ser de gran ayuda para los demas estudiantes.
         </p>
       </div>
@@ -72,8 +72,8 @@ export default function Acerca() {
   </div>
 </section>
 </main>
-<footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Arica, Chile</p></div>
+<footer className="py-5 bg-dark">
+            <div className="container"><p className="m-0 text-center text-white">Copyright &copy; Arica, Chile</p></div>
 </footer>
     </>
   )

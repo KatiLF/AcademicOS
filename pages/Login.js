@@ -20,9 +20,9 @@ export default function Login() {
   }
 
   return (
-    <div class='d-flex justify-content-center align-items-center bg-secondary p-5 rounded'>
+    <div className='d-flex justify-content-center align-items-center bg-secondary p-5 rounded'>
       <form onSubmit={handleLogin}>
-        <label class="display-5">
+        <label className="display-5">
           Iniciar Sesion
         </label>
         <br />
