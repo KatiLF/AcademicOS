@@ -31,7 +31,6 @@ export default function Iniciar() {
             Authorization: `Bearer ${token}`
         }
     }
-    console.log(config)
     fetch(url, config).then((response) => response.json()).then((data) => {
       let config2 ={
         method: "POST",
@@ -39,10 +38,10 @@ export default function Iniciar() {
             Authorization: `Bearer ${data.token}`
         }
       } 
-      console.log(data.token)
-      console.log(config2)
+
       fetch(url2, config2).then((response) => response.json()).then((data2) => {
-        console.log(data2)
+        const decoded = jwt.verify(data2, secretToken)
+        console.log(decoded)
       })
     })
   }
