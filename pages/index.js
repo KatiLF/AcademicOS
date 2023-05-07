@@ -7,8 +7,6 @@ import styles from '@/styles/Home.module.css'
 
 
 const secretToken = "M+Yidu6bWMk9GKkJopL0Sk+ri/RRcBFTF5DmxvbBZaJj+ouXBWzNeSb0qf+rG0GuLXqeD34vZ0RKH2LnS+0INw=="
-const token1 = jwt.sign("aa", secretToken);
-console.log(token1)
 let url ="https://vercel-xi-smoky.vercel.app/"
 let url2 ="https://middleware-aos.vercel.app/login"
 
