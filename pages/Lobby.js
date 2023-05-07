@@ -32,34 +32,6 @@ export default function Lobby() {
 
         
 
-    const resources = async (event) => {
-        event.preventDefault()
-        let data = {
-          email: email,
-          pass: password
-      }
-    
-      const token = jwt.sign(data, secretToken);
-    
-      console.log(token)
-        let config ={
-            method: "POST",
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        }
-    
-        fetch(url, config).then((response) => response.json()).then((data) => {
-          console.log("aqui: ", data)
-          let config2 ={
-            method: "POST",
-            headers: {
-                Authorization: `Bearer ${data}`
-            }
-        }
-        })
-    
-      }
 
   return (
     
