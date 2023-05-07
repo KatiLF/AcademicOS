@@ -37,7 +37,6 @@ export default function Iniciar() {
     }
 
     fetch(url, config).then((response) => response.json()).then((data) => {
-      console.log("aqui: ", data)
       let config2 ={
         method: "POST",
         headers: {
