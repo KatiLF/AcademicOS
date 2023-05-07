@@ -33,9 +33,16 @@ export default function Iniciar() {
     }
 
     fetch(url, config).then((response) => response.json()).then((data) => {
-      console.log(data)
+      let config2 ={
+        method: "POST",
+        headers: {
+            Authorization: `Bearer ${data}`
+        }
+      } 
+      fetch(url2, config2).then((response) => response.json()).then((data2) => {
+        console.log(data2)
+      })
     })
-
   }
   
 
