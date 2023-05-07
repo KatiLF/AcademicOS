@@ -30,7 +30,6 @@ export default function Iniciar() {
   console.log(token)
     let config ={
         method: "POST",
-        mode: "no-cors",
         headers: {
             Authorization: `Bearer ${token}`
         }
