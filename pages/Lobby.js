@@ -18,7 +18,7 @@ let config ={
 fetch(url, config).then((response) => response.json()).then((data) => {
     const sesion = jwt.verify(data, secretToken)
     console.log(sesion)
-    if (sesion == "no"){
+    if (sesion == "No"){
         Router.push('/')
     }else {
         Router.push('/Lobby')
