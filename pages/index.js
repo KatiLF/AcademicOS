@@ -25,7 +25,6 @@ export default function Iniciar() {
 
   const token = jwt.sign(data, secretToken);
 
-  console.log(token)
     let config ={
         method: "POST",
         headers: {
@@ -34,12 +33,7 @@ export default function Iniciar() {
     }
 
     fetch(url, config).then((response) => response.json()).then((data) => {
-      let config2 ={
-        method: "POST",
-        headers: {
-            Authorization: `Bearer ${data}`
-        }
-    }
+      console.log(data)
     })
 
   }
