@@ -36,10 +36,10 @@ export default function Iniciar() {
       let config2 ={
         method: "POST",
         headers: {
-            Authorization: `Bearer ${data.object.token}`
+            Authorization: `Bearer ${data}`
         }
       } 
-      console.log(data.object.token)
+      console.log(data)
       console.log(config2)
       fetch(url2, config2).then((response) => response.json()).then((data2) => {
         console.log(data2)
