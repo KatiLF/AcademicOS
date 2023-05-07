@@ -39,8 +39,7 @@ export default function Iniciar() {
         }
       } 
       fetch(url2, config2).then((response) => response.json()).then((data2) => {
-        const decoded = jwt.verify(data2, secretToken)
-        console.log(decoded)
+        console.log(data2)
       })
     })
   }
