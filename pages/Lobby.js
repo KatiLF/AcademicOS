@@ -6,27 +6,30 @@ import Router from 'next/router'
 const secretToken = "M+Yidu6bWMk9GKkJopL0Sk+ri/RRcBFTF5DmxvbBZaJj+ouXBWzNeSb0qf+rG0GuLXqeD34vZ0RKH2LnS+0INw=="
 let url ="https://middleware-aos.vercel.app/login"
 
+let sesion_actual = "sesion actual"
+const token_sesion = jwt.sign(sesion_actual, secretToken);
+let config ={
+    method: "POST",
+    headers: {
+        Authorization: `Bearer ${token_sesion}`
+        }
+    }
+fetch(url, config).then((response) => response.json()).then((data) => {
+    const sesion = jwt.verify(data, secretToken)
+    console.log(sesion)
+    if (sesion.aud == "authenticated"){
+        Router.push('/Lobby')
+    }else {
+        Router.push('/')
+    }
+
+    })   
+
 
 
 export default function Lobby() {
 
-    let sesion_actual = "sesion actual"
-    const token_sesion = jwt.sign(sesion_actual, secretToken);
-        let config ={
-            method: "POST",
-            headers: {
-                Authorization: `Bearer ${token_sesion}`
-            }
-        }
-        fetch(url, config).then((response) => response.json()).then((data) => {
-            const sesion = jwt.verify(data, secretToken)
-            console.log(sesion)
-            if (sesion.aud == "authenticated"){
-                }else {
-                Router.push('/')
-                }
-
-        })        
+        
 
     const resources = async (event) => {
         event.preventDefault()

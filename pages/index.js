@@ -46,8 +46,6 @@ export default function Iniciar() {
           }else {
           Router.push('/')
           }
-
-        console.log(decoded)
       })
     })
   }
