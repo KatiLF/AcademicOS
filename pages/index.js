@@ -39,6 +39,8 @@ export default function Iniciar() {
             Authorization: `Bearer ${data}`
         }
       } 
+      console.log(data)
+      console.log(config2)
       fetch(url2, config2).then((response) => response.json()).then((data2) => {
         console.log(data2)
       })
