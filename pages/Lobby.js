@@ -18,10 +18,10 @@ let config ={
 fetch(url, config).then((response) => response.json()).then((data) => {
     const sesion = jwt.verify(data, secretToken)
     console.log(sesion)
-    if (sesion.aud == "authenticated"){
-        Router.push('/Lobby')
-    }else {
+    if (sesion == "no"){
         Router.push('/')
+    }else {
+        Router.push('/Lobby')
     }
 
     })   
