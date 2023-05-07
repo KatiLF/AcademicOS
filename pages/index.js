@@ -36,7 +36,7 @@ export default function Iniciar() {
       let config2 ={
         method: "POST",
         headers: {
-            Authorization: `Bearer ${data}`
+            Authorization: `Bearer ${data.token}`
         }
       } 
       console.log(data)
