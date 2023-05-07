@@ -1,31 +1,50 @@
 import { useState } from 'react'
-import { supabase } from '../utils/supabase'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Router from 'next/router'
-
+const jwt = require('jsonwebtoken');
 import styles from '@/styles/Home.module.css'
+
+
+
+const secretToken = "M+Yidu6bWMk9GKkJopL0Sk+ri/RRcBFTF5DmxvbBZaJj+ouXBWzNeSb0qf+rG0GuLXqeD34vZ0RKH2LnS+0INw=="
+const token1 = jwt.sign("aa", secretToken);
+console.log(token1)
+let url ="https://vercel-xi-smoky.vercel.app/"
+let url2 ="https://middleware-aos.vercel.app/login"
 
 
 export default function Iniciar() {
   const [email, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  
 
   const handleLogin = async (event) => {
     event.preventDefault()
-    const { user, error } = await supabase.auth.signInWithPassword({
-       email: email,
-       password: password,
-    })
-    if (error) {
-      console.log('Error:', error.message)
-    } else {
-      console.log('Usuario:', email)
-      const { data } = await supabase.auth.refreshSession()
-      const { session } = data
-      console.log(session)
-      
-      
+    let data = {
+      email: email,
+      pass: password
+  }
+
+  const token = jwt.sign(data, secretToken);
+
+  console.log(token)
+    let config ={
+        method: "POST",
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
     }
+
+    fetch(url, config).then((response) => response.json()).then((data) => {
+      console.log("aqui: ", data)
+      let config2 ={
+        method: "POST",
+        headers: {
+            Authorization: `Bearer ${data}`
+        }
+    }
+    })
+
   }
   
 
