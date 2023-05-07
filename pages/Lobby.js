@@ -73,7 +73,7 @@ export default function Lobby() {
                     <li className="nav-item"><a className="nav-link" href="Lobby">Inicio</a></li>
                   <li className="nav-item"><a className="nav-link" href="Recursos">Recursos</a></li>
                   <li className="nav-item"><a className="nav-link" href="acerca">Acerca de mi</a></li>
-                  <li className="nav-item"><a className="nav-link" onClick = {()=> supabase.auth.signOut()}>Cerrar Sesión</a></li>
+                  <li className="nav-item"><a className="nav-link">Cerrar Sesión</a></li>
             
                     </ul>
                 </div>
