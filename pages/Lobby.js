@@ -10,8 +10,8 @@ let url ="https://middleware-aos.vercel.app/login"
 
 export default function Lobby() {
 
-    let sesion = "sesion actual"
-    const token_sesion = jwt.sign(sesion, secretToken);
+    let sesion_actual = "sesion actual"
+    const token_sesion = jwt.sign(sesion_actual, secretToken);
         let config ={
             method: "POST",
             headers: {
@@ -21,9 +21,9 @@ export default function Lobby() {
         fetch(url, config).then((response) => response.json()).then((data) => {
             const sesion = jwt.verify(data, secretToken)
             console.log(sesion)
-            if (!sesion){
-                Router.push('/')
+            if (sesion.aud == "authenticated"){
                 }else {
+                Router.push('/')
                 }
 
         })        
