@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { supabase } from '../utils/supabase'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import styles from '@/styles/Home.module.css'
 import Router from 'next/router'
@@ -7,17 +6,6 @@ import Router from 'next/router'
 
 
 export default function Lobby() {
-    useEffect(()=> {
-        supabase.auth.onAuthStateChange((event, session) => {
-            if (!session){
-            Router.push('/')
-            }else {
-            Router.push('/Lobby')
-            }
-
-        })
-
-        }, [])
   
 
   return (
