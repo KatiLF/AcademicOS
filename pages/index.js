@@ -31,24 +31,15 @@ export default function Iniciar() {
             Authorization: `Bearer ${token}`
         }
     }
-    fetch(url, config).then((response) => response.json()).then((data) => {
-      let config2 ={
-        method: "POST",
-        headers: {
-            Authorization: `Bearer ${data.token}`
+    fetch(url2, config).then((response) => response.json()).then((data) => {
+      const decoded = jwt.verify(data, secretToken)
+
+      if (decoded.data.aud == "authenticated"){
+        
+        Router.push('/Lobby')
+        }else {
+        Router.push('/')
         }
-      } 
-
-      fetch(url2, config2).then((response) => response.json()).then((data2) => {
-        const decoded = jwt.verify(data2, secretToken)
-        if (decoded.aud == "authenticated"){
-          Router.push('/Lobby')
-          }else {
-          Router.push('/')
-          }
-
-        console.log(decoded)
-      })
     })
   }
   
@@ -141,3 +132,4 @@ export default function Iniciar() {
         </>
   )
 }
+export { decoded };
