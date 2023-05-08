@@ -5,7 +5,11 @@ import Router from 'next/router'
 const jwt = require('jsonwebtoken');
 const secretToken = "M+Yidu6bWMk9GKkJopL0Sk+ri/RRcBFTF5DmxvbBZaJj+ouXBWzNeSb0qf+rG0GuLXqeD34vZ0RKH2LnS+0INw=="
 
-data = "sesion actual"
+
+
+
+export default function Lobby() {
+    data = "sesion actual"
 let url ="https://middle-two.vercel.app/"
 const token = jwt.sign(data, secretToken);
 
@@ -22,10 +26,6 @@ const token = jwt.sign(data, secretToken);
       })
       
     })
-
-
-export default function Lobby() {
-
         
 
 
