@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import styles from '@/styles/Home.module.css'
 import Router from 'next/router'
 const jwt = require('jsonwebtoken');
+import Cookies from 'js-cookie'
 const secretToken = "M+Yidu6bWMk9GKkJopL0Sk+ri/RRcBFTF5DmxvbBZaJj+ouXBWzNeSb0qf+rG0GuLXqeD34vZ0RKH2LnS+0INw=="
 let url ="https://middle-two.vercel.app/pedirsesion"
 
@@ -26,7 +27,7 @@ export default function Lobby() {
                     <li className="nav-item"><a className="nav-link" href="Lobby">Inicio</a></li>
                   <li className="nav-item"><a className="nav-link" href="Recursos">Recursos</a></li>
                   <li className="nav-item"><a className="nav-link" href="acerca">Acerca de mi</a></li>
-                  <li className="nav-item"><a className="nav-link">Cerrar Sesión</a></li>
+                  <li className="nav-item"><a className="nav-link" onClick={Cookies.remove('sesion')}>Cerrar Sesión</a></li>
             
                     </ul>
                 </div>
