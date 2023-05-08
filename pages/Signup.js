@@ -1,5 +1,5 @@
 import { useState } from 'react'
-
+const jwt = require('jsonwebtoken');
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Router from 'next/router'
 
