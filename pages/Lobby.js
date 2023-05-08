@@ -4,8 +4,11 @@ import styles from '@/styles/Home.module.css'
 import Router from 'next/router'
 import { decoded } from '.'
 const jwt = require('jsonwebtoken');
+const { ChildComponent } = require ('pages/index.js')
 
-console.log(decoded)
+sesion = ChildComponent()
+
+console.log(sesion)
 
 
 

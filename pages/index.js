@@ -3,13 +3,22 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Router from 'next/router'
 const jwt = require('jsonwebtoken');
 import styles from '@/styles/Home.module.css'
-export { decoded };
 
 
 
 const secretToken = "M+Yidu6bWMk9GKkJopL0Sk+ri/RRcBFTF5DmxvbBZaJj+ouXBWzNeSb0qf+rG0GuLXqeD34vZ0RKH2LnS+0INw=="
 let url ="https://vercel-xi-smoky.vercel.app/"
 let url2 ="https://middleware-aos.vercel.app/login"
+
+
+export default function ParentComponent() {
+  const [decoded, setDecoded] = useState(null);
+
+  return (
+    // Renderiza el componente hijo y pasa decoded como prop
+    <ChildComponent decoded={decoded} />
+  );
+}
 
 
 export default function Iniciar() {
@@ -33,8 +42,8 @@ export default function Iniciar() {
         }
     }
     fetch(url2, config).then((response) => response.json()).then((data) => {
-      var decoded = jwt.verify(data, secretToken)
-
+      const decoded = jwt.verify(data, secretToken)
+      ParentComponent(decoded)
       if (decoded.data.aud == "authenticated"){
         
         Router.push('/Lobby')
@@ -133,3 +142,12 @@ export default function Iniciar() {
         </>
   )
 }
+export default function ChildComponent({ decoded }) {
+  // Usa decoded en el componente según tus necesidades
+  return (
+    <div>
+      Decoded value: {decoded}
+    </div>
+  );
+}
+
