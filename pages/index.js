@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Router from 'next/router'
 const jwt = require('jsonwebtoken');
 import styles from '@/styles/Home.module.css'
+import Cookies from 'js-cookie'
 
 
 
@@ -31,9 +32,12 @@ export default function Iniciar() {
         }
     }
     fetch(url, config).then((response) => response.json()).then((data) => {
+      console.log(data)
       const decoded = jwt.verify(data, secretToken)
-      if (decoded == "authenticated"){
-        
+      console.log(decoded.data.session.user.aud)
+      if (decoded.data.session.user.aud == "authenticated"){
+        console.log(decoded)
+        Cookies.set('sesion', decoded.data.session.access_token, {expires: 7})
         Router.push('/Lobby')
         }else {
         Router.push('/')

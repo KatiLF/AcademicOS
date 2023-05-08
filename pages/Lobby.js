@@ -10,24 +10,6 @@ let url ="https://middle-two.vercel.app/pedirsesion"
 
 export default function Lobby() {
  
-    let data = "aaa"
-    const token = jwt.sign(data, secretToken);
-
-  let config ={
-      method: "POST",
-      headers: {
-          Authorization: `Bearer ${token}`
-      }
-  }
-
-fetch(url, config).then((response) => response.json()).then((data) => {
-    const nuevo = data
-    if (data != '')
-    {
-        console.log("sesion actual: ", data);    
-    }
-    
-})
 
 
 
