@@ -9,6 +9,9 @@ const { ChildComponent } = require ('pages/index.js')
 sesion = ChildComponent()
 
 console.log(sesion)
+console.log(session)
+console.log("funciono")
+console.log(session)
 
 
 
