@@ -145,9 +145,7 @@ export default function Iniciar() {
 export function ChildComponent({ decoded }) {
   // Usa decoded en el componente según tus necesidades
   return (
-    <div>
-      Decoded value: {decoded}
-    </div>
+    decoded
   );
 }
 
