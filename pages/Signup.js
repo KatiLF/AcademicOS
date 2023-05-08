@@ -28,8 +28,9 @@ export default function Signup() {
     
   }
 
-
   
+
+
 
   return (
   <>
@@ -97,4 +98,4 @@ export default function Signup() {
     </div>
   </>
   )
-
+  }
