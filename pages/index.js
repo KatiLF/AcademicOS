@@ -11,7 +11,7 @@ let url ="https://vercel-xi-smoky.vercel.app/"
 let url2 ="https://middleware-aos.vercel.app/login"
 
 
-export default function ParentComponent() {
+export function ParentComponent() {
   const [decoded, setDecoded] = useState(null);
 
   return (
@@ -142,7 +142,7 @@ export default function Iniciar() {
         </>
   )
 }
-export default function ChildComponent({ decoded }) {
+export function ChildComponent({ decoded }) {
   // Usa decoded en el componente según tus necesidades
   return (
     <div>
