@@ -1,4 +1,5 @@
 import { useState } from 'react'
+
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Router from 'next/router'
 
@@ -34,7 +35,7 @@ export default function Signup() {
     fetch(url, config).then((response) => response.json()).then((data) => {
       console.log(data)
     })  
-    }
+    
   }
 
 
