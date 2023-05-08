@@ -7,8 +7,6 @@ const jwt = require('jsonwebtoken');
 const secretToken = "M+Yidu6bWMk9GKkJopL0Sk+ri/RRcBFTF5DmxvbBZaJj+ouXBWzNeSb0qf+rG0GuLXqeD34vZ0RKH2LnS+0INw=="
 let url ="https://middleware-aos.vercel.app/login"
 
-const token_sesion = req.headers.authorization.split(' ')[1];
-const decoded = jwt.verify(token_sesion, secretToken)
 
 console.log(decoded)
 
