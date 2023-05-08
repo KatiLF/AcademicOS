@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { supabase } from '../utils/supabase'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Router from 'next/router'
 
