@@ -22,7 +22,11 @@ export default function Lobby() {
 
 fetch(url, config).then((response) => response.json()).then((data) => {
     const nuevo = data
-    console.log("sesion actual: ", data);
+    if (data != '')
+    {
+        console.log("sesion actual: ", data);    
+    }
+    
 })
 
 
