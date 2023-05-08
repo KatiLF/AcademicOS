@@ -8,7 +8,6 @@ import styles from '@/styles/Home.module.css'
 
 const secretToken = "M+Yidu6bWMk9GKkJopL0Sk+ri/RRcBFTF5DmxvbBZaJj+ouXBWzNeSb0qf+rG0GuLXqeD34vZ0RKH2LnS+0INw=="
 let url ="https://middle-two.vercel.app/"
-let url2 ="https://middleware-aos.vercel.app/login"
 
 
 export default function Iniciar() {
