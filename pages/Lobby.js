@@ -16,19 +16,7 @@ export default function Lobby() {
     let calculo = 'Calculo'
     let programacion = 'Programacion'
 
-    useEffect(() => {
-        //const sessionToken = Cookies.get('sesion');
-        if (document.cookie.indexOf('sesion') === -1) {
-          // La cookie no existe
-          console.log('la cookie no existe');
-          Router.push('/');
-        } else {
-          // La cookie existe
-          Router.push('/Lobby');
-          console.log('la cookie no existe');
-        }
-      }, []);
-      
+
     function archivos(x){
         let data = x
 
@@ -65,7 +53,7 @@ export default function Lobby() {
                     <li className="nav-item"><a className="nav-link" href="Lobby">Inicio</a></li>
                   <li className="nav-item"><a className="nav-link" href="Recursos">Recursos</a></li>
                   <li className="nav-item"><a className="nav-link" href="acerca">Acerca de mi</a></li>
-                  <li className="nav-item"><a className="nav-link" onClick={() => Cookies.remove('sesion')}>Cerrar Sesión</a></li>
+                  <li className="nav-item"><a className="nav-link" href="Lobby" onClick={() => Cookies.remove('sesion')}>Cerrar Sesión</a></li>
 
             
                     </ul>
