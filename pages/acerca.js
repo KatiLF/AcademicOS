@@ -2,7 +2,6 @@ import Head from 'next/head'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Inter } from 'next/font/google'
 import { useState, useEffect } from 'react'
-import { supabase } from '../utils/supabase'
 import Router from 'next/router'
 
 

@@ -4,7 +4,6 @@ import { Inter } from 'next/font/google'
 import Navegador from './Navegador'
 import Footer from './Footer'
 import { useState } from 'react'
-import { supabase } from '../utils/supabase'
 
 const inter = Inter({ subsets: ['latin'] })
 
