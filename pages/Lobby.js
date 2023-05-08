@@ -4,14 +4,14 @@ import styles from '@/styles/Home.module.css'
 import Router from 'next/router'
 const jwt = require('jsonwebtoken');
 const secretToken = "M+Yidu6bWMk9GKkJopL0Sk+ri/RRcBFTF5DmxvbBZaJj+ouXBWzNeSb0qf+rG0GuLXqeD34vZ0RKH2LnS+0INw=="
-
+let url ="https://middle-two.vercel.app/"
 
 
 
 export default function Lobby() {
     data = "sesion actual"
-let url ="https://middle-two.vercel.app/"
-const token = jwt.sign(data, secretToken);
+
+    const token = jwt.sign(data, secretToken);
 
     let config ={
         method: "POST",
@@ -20,7 +20,7 @@ const token = jwt.sign(data, secretToken);
         }
     }
     fetch(url, config, async).then((response) => response.json()).then((data) => {
-      jwt.verify(token, token1, async (decoded) => {
+      jwt.verify(token, token1, (decoded) => {
         console.log(decoded)
         console.log("funciono")
       })
