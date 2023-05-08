@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Router from 'next/router'
 const jwt = require('jsonwebtoken');
@@ -34,7 +34,6 @@ export default function Iniciar() {
     fetch(url, config).then((response) => response.json()).then((data) => {
       console.log(data)
       const decoded = jwt.verify(data, secretToken)
-      console.log(decoded.data.session.user.aud)
       if (decoded.data.session.user.aud == "authenticated"){
         console.log(decoded)
         Cookies.set('sesion', decoded.data.session.access_token, {expires: 7})
@@ -44,7 +43,19 @@ export default function Iniciar() {
         }
     })
   }
-  
+  useEffect(() => {
+    const sessionToken = Cookies.get('sesion');
+    console.log('Este es el sesion token: ', sessionToken);
+    if (document.cookie.indexOf('sesion') === -1) {
+      // La cookie no existe
+      console.log('la cookie no existe');
+      Router.push('/');
+    } else {
+      // La cookie existe
+      Router.push('/Lobby');
+      console.log('la cookie no existe');
+    }
+  }, []);
 
   return (
     
