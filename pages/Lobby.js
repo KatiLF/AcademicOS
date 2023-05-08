@@ -27,7 +27,7 @@ const token = jwt.sign(data, secretToken);
       
     })
         
-
+    console.log("aaaa")
 
   return (
     
