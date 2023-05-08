@@ -9,20 +9,15 @@ const secretToken = "M+Yidu6bWMk9GKkJopL0Sk+ri/RRcBFTF5DmxvbBZaJj+ouXBWzNeSb0qf+
 export default function Signup() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [name, setName] = useState("")
-  const [last_name, setLastName] = useState("")
-  const [rut, setRut] = useState("")
 
   const handleSignup = async (event) => {
     event.preventDefault()
 
     let data = {
       email: email,
-      password: password,
-      name: name,
-      last_name: last_name,
-      rut: rut
+      password: password
     }
+    console.log(data)
 
     const token = jwt.sign(data, secretToken);
 
@@ -33,8 +28,15 @@ export default function Signup() {
       }
     }
     fetch(url, config).then((response) => response.json()).then((data) => {
-      alert(data)
-    })  
+
+      if (data == "Registro completado"){
+        alert(data)
+        Router.push('/')
+        }else {
+        Router.push('/Signup')
+        }
+      
+  })
     
     
   }
@@ -82,17 +84,6 @@ export default function Signup() {
                           <input id="form3Example4" className="form-control luminicente" placeholder="Ingrese contraseña..."type="password" value={password} onChange={(event) => setPassword(event.target.value)}/>
                         </div>
 
-                        <div className="form-outline mb-4">
-                          <input id="form3Example5" className="form-control luminicente" placeholder="Ingrese nombre..."type="name" value={name} onChange={(event) => setName(event.target.value)}/>
-                        </div>
-
-                        <div className="form-outline mb-4">
-                          <input id="form3Example6" className="form-control luminicente" placeholder="Ingrese apellido..."type="last_name" value={last_name} onChange={(event) => setLastName(event.target.value)}/>
-                        </div>
-
-                        <div className="form-outline mb-4">
-                          <input id="form3Example7" className="form-control luminicente" placeholder="Ingrese el rut..."type="rut" value={rut} onChange={(event) => setRut(event.target.value)}/>
-                        </div>
 
                         <button type="submit" className="btn btn-primary btn-block mb-4 ">
                           Registrarse
