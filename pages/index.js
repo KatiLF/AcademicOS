@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Router from 'next/router'
 const jwt = require('jsonwebtoken');
 import styles from '@/styles/Home.module.css'
+export { decoded };
 
 
 
@@ -132,4 +133,3 @@ export default function Iniciar() {
         </>
   )
 }
-export { decoded };
