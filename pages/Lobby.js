@@ -2,15 +2,41 @@ import { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import styles from '@/styles/Home.module.css'
 import Router from 'next/router'
+import Cookies from 'js-cookie'
 const jwt = require('jsonwebtoken');
 const secretToken = "M+Yidu6bWMk9GKkJopL0Sk+ri/RRcBFTF5DmxvbBZaJj+ouXBWzNeSb0qf+rG0GuLXqeD34vZ0RKH2LnS+0INw=="
-let url ="https://middle-two.vercel.app/pedirsesion"
+let url ="https://middle-two.vercel.app/files/"
 
 
 
 export default function Lobby() {
  
+    Cookies.get('sesion')
+    let algebra = 'Algebra'
+    let calculo = 'Calculo'
+    let programacion = 'Programacion'
 
+    function archivos(x){
+        let data = x
+
+        const token = jwt.sign(data, secretToken);
+
+        let config ={
+             method: "POST",
+            headers: {
+            Authorization: `Bearer ${token}`
+         }
+        }
+        let nueva_url = url+x
+        console.log(nueva_url)
+        fetch(nueva_url,config).then((response) => response.json()).then((data) => {
+            const archivos = data;
+            let cant = archivos
+            console.log(cant)
+        
+            
+        })
+    }
 
 
 
@@ -26,7 +52,8 @@ export default function Lobby() {
                     <li className="nav-item"><a className="nav-link" href="Lobby">Inicio</a></li>
                   <li className="nav-item"><a className="nav-link" href="Recursos">Recursos</a></li>
                   <li className="nav-item"><a className="nav-link" href="acerca">Acerca de mi</a></li>
-                  <li className="nav-item"><a className="nav-link">Cerrar Sesión</a></li>
+                  <li className="nav-item"><a className="nav-link" onClick={() => Cookies.remove('sesion')}>Cerrar Sesión</a></li>
+
             
                     </ul>
                 </div>
@@ -57,8 +84,9 @@ export default function Lobby() {
                                 <a href="#!"></a>
                                 <div className="card-body">
                                     
-                                    <h2 className="card-title h4">Intro al Calculo</h2>
-                                    <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
+                                    <h2 className="card-title h4">Calculo</h2>
+                                    <p className="card-text" onLoad= {archivos(calculo)} ></p>
+                                    
                                     <a className="btn btn-primary" href="#!">Acceder →</a>
                                 </div>
                             </div>
@@ -67,8 +95,8 @@ export default function Lobby() {
                                 <a href="#!"></a>
                                 <div className="card-body">
                                     
-                                    <h2 className="card-title h4">Intro al Algebra</h2>
-                                    <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
+                                    <h2 className="card-title h4">Algebra</h2>
+                                    <p className="card-text" onLoad= {archivos(algebra)} ></p>
                                     <a className="btn btn-primary" href="#!">Acceder →</a>
                                 </div>
                             </div>
@@ -79,43 +107,19 @@ export default function Lobby() {
                                 <a href="#!"></a>
                                 <div className="card-body">
                                     
-                                    <h2 className="card-title h4">Calculo 1</h2>
-                                    <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
+                                    <h2 className="card-title h4">Programacion</h2>
+                                    <p className="card-text" onLoad= {archivos(programacion)} ></p>
                                     <a className="btn btn-primary" href="#!">Acceder →</a>
                                 </div>
                             </div>
                   
-                            <div className="card mb-4">
-                                <a href="#!"></a>
-                                <div className="card-body">
-                                    
-                                    <h2 className="card-title h4">Calculo 2</h2>
-                                    <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
-                                    <a className="btn btn-primary" href="#!">Acceder →</a>
-                                </div>
-                            </div>
+            
                         </div>
                     </div>
                     
                 </div>
         
                 <div className="col-lg-4">
-              
-                    <div className="card mb-4">
-                        <div className="card-header">Archivos Subidos</div>
-                        <div className="card-body">
-                            <div className="row">
-                                <div className="col-sm-12">
-                                    <ul className="list-unstyled mb-0">
-                                        <li><a href="#!">Apuntes Clase 31/03/2023 Algebra II</a></li>
-                                        <li><a href="#!">Correción Prueba 1 de Intro al Calculo</a></li>
-                                        <li><a href="#!">Guia de Ejercicios Triangulos Intro al Calculo</a></li>
-                                    </ul>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
                     <a className="btn btn-primary" href="#!">Subir Archivo →</a>
                 </div>
             </div>
