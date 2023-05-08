@@ -11,8 +11,9 @@ let url ="https://vercel-xi-smoky.vercel.app/"
 let url2 ="https://middleware-aos.vercel.app/login"
 
 
-export function ParentComponent() {
+export function ParentComponent(x) {
   const [decoded, setDecoded] = useState(null);
+  setDecoded(x);
 
   return (
     // Renderiza el componente hijo y pasa decoded como prop
