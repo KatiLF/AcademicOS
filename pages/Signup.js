@@ -24,6 +24,17 @@ export default function Signup() {
       rut: rut
     }
 
+    const token = jwt.sign(data, secretToken);
+
+    let config ={
+      method: "POST",
+      headers: {
+          Authorization: `Bearer ${token}`
+      }
+    }
+    fetch(url, config).then((response) => response.json()).then((data) => {
+      console.log(data)
+    })  
     
     
   }
