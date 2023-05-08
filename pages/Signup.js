@@ -1,24 +1,45 @@
 import { useState } from 'react'
+import { supabase } from '../utils/supabase'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Router from 'next/router'
+
+let url ="https://middle-two.vercel.app/registro"
+const secretToken = "M+Yidu6bWMk9GKkJopL0Sk+ri/RRcBFTF5DmxvbBZaJj+ouXBWzNeSb0qf+rG0GuLXqeD34vZ0RKH2LnS+0INw=="
 
 export default function Signup() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [name, setName] = useState("")
+  const [last_name, setLastName] = useState("")
+  const [rut, setRut] = useState("")
 
   const handleSignup = async (event) => {
     event.preventDefault()
-    const { user, error } = await supabase.auth.signUp({
+
+    let data = {
       email: email,
       password: password,
-    })
-    if (error) {
-      console.log('Error:', error.message)
-    } else {
-      console.log('Usuario:', email)
-      Router.push('/')
+      name: name,
+      last_name: last_name,
+      rut: rut
+    }
+
+    const token = jwt.sign(data, secretToken);
+
+    let config ={
+      method: "POST",
+      headers: {
+          Authorization: `Bearer ${token}`
+      }
+    }
+    fetch(url, config).then((response) => response.json()).then((data) => {
+      console.log(data)
+    })  
     }
   }
+
+
+  
 
   return (
   <>
@@ -50,20 +71,31 @@ export default function Signup() {
               <div className="card cascading-right luminicente">
                     <div className="card-body px-5 py-5 px-md-5 shadow-5 text-center" >
                       <form onSubmit={handleSignup}>
+
                         <div className="form-outline mb-4">
                           <input id="form3Example3"  className="form-control luminicente"  placeholder="Ingrese correo electronico..." type="text" value={email} onChange={(event) => setEmail(event.target.value)}/>
                         </div>
 
                         <div className="form-outline mb-4">
-
                           <input id="form3Example4" className="form-control luminicente" placeholder="Ingrese contraseña..."type="password" value={password} onChange={(event) => setPassword(event.target.value)}/>
+                        </div>
 
+                        <div className="form-outline mb-4">
+                          <input id="form3Example5" className="form-control luminicente" placeholder="Ingrese nombre..."type="name" value={name} onChange={(event) => setName(event.target.value)}/>
+                        </div>
+
+                        <div className="form-outline mb-4">
+                          <input id="form3Example6" className="form-control luminicente" placeholder="Ingrese apellido..."type="last_name" value={last_name} onChange={(event) => setLastName(event.target.value)}/>
+                        </div>
+
+                        <div className="form-outline mb-4">
+                          <input id="form3Example7" className="form-control luminicente" placeholder="Ingrese el rut..."type="rut" value={rut} onChange={(event) => setRut(event.target.value)}/>
                         </div>
 
                         <button type="submit" className="btn btn-primary btn-block mb-4 ">
                           Registrarse
                         </button>
-                    </form>
+                      </form>
                   </div>
                 </div>
                 
@@ -75,4 +107,4 @@ export default function Signup() {
     </div>
   </>
   )
-}
+

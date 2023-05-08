@@ -6,7 +6,7 @@ import Cookies from 'js-cookie'
 const jwt = require('jsonwebtoken');
 const secretToken = "M+Yidu6bWMk9GKkJopL0Sk+ri/RRcBFTF5DmxvbBZaJj+ouXBWzNeSb0qf+rG0GuLXqeD34vZ0RKH2LnS+0INw=="
 let url ="https://middle-two.vercel.app/files/"
-
+var aux =''
 
 
 export default function Lobby() {
@@ -31,8 +31,8 @@ export default function Lobby() {
         console.log(nueva_url)
         fetch(nueva_url,config).then((response) => response.json()).then((data) => {
             const archivos = data.map(file => file.name);
-            let cant = archivos.length
-            console.log(cant)
+            aux = archivos
+            console.log(aux)
         
             
         })
@@ -86,7 +86,7 @@ export default function Lobby() {
                                     
                                     <h2 className="card-title h4">Calculo</h2>
                                     <p className="card-text" onLoad= {archivos(calculo)} ></p>
-                                    
+                
                                     <a className="btn btn-primary" href="#!">Acceder →</a>
                                 </div>
                             </div>
