@@ -29,12 +29,7 @@ export default function Signup() {
     }
     fetch(url, config).then((response) => response.json()).then((data) => {
 
-      if (data == "Registro completado"){
-        alert(data)
-        Router.push('/')
-        }else {
-        Router.push('/Signup')
-        }
+      console.log(data)
       
   })
     
