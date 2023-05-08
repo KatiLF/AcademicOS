@@ -9,7 +9,7 @@ let url ="https://middle-two.vercel.app/"
 
 
 export default function Lobby() {
-    data = "sesion actual"
+    const data = "sesion actual"
 
     const token = jwt.sign(data, secretToken);
 
@@ -19,11 +19,9 @@ export default function Lobby() {
             Authorization: `Bearer ${token}`
         }
     }
-    fetch(url, config, async).then((response) => response.json()).then((data) => {
-      jwt.verify(token, token1, (decoded) => {
-        console.log(decoded)
-        console.log("funciono")
-      })
+    fetch(url, config).then((response) => response.json()).then((data) => {
+      decoded = jwt.verify(token, token1)
+      console.log(decoded)
       
     })
         
