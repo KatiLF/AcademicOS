@@ -4,7 +4,6 @@ import styles from '@/styles/Home.module.css'
 import Router from 'next/router'
 import Cookies from 'js-cookie'
 const jwt = require('jsonwebtoken');
-import Cookies from 'js-cookie'
 const secretToken = "M+Yidu6bWMk9GKkJopL0Sk+ri/RRcBFTF5DmxvbBZaJj+ouXBWzNeSb0qf+rG0GuLXqeD34vZ0RKH2LnS+0INw=="
 let url ="https://middle-two.vercel.app/files/"
 
@@ -12,7 +11,6 @@ let url ="https://middle-two.vercel.app/files/"
 
 export default function Lobby() {
  
-<<<<<<< HEAD
     Cookies.get('sesion')
     let algebra = 'Algebra'
     let calculo = 'Calculo'
@@ -32,27 +30,13 @@ export default function Lobby() {
         let nueva_url = url+x
         console.log(nueva_url)
         fetch(nueva_url,config).then((response) => response.json()).then((data) => {
-            const archivos = data;
-            let cant = archivos
+            const archivos = data.map(file => file.name);
+            let cant = archivos.length
             console.log(cant)
         
             
         })
     }
-=======
-    useEffect(() => {
-        //const sessionToken = Cookies.get('sesion');
-        if (document.cookie.indexOf('sesion') === -1) {
-          // La cookie no existe
-          console.log('la cookie no existe');
-          Router.push('/');
-        } else {
-          // La cookie existe
-          Router.push('/Lobby');
-          console.log('la cookie no existe');
-        }
-      }, []);
->>>>>>> 06e2f641f0cdb26e67c3a6d2df5578d46f345e47
 
 
 
@@ -68,12 +52,8 @@ export default function Lobby() {
                     <li className="nav-item"><a className="nav-link" href="Lobby">Inicio</a></li>
                   <li className="nav-item"><a className="nav-link" href="Recursos">Recursos</a></li>
                   <li className="nav-item"><a className="nav-link" href="acerca">Acerca de mi</a></li>
-<<<<<<< HEAD
                   <li className="nav-item"><a className="nav-link" onClick={() => Cookies.remove('sesion')}>Cerrar Sesión</a></li>
 
-=======
-                  <li className="nav-item"><a className="nav-link" href="Lobby" onClick={() => Cookies.remove('sesion')}>Cerrar Sesión</a></li>
->>>>>>> 06e2f641f0cdb26e67c3a6d2df5578d46f345e47
             
                     </ul>
                 </div>
