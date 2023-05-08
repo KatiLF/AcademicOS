@@ -21,8 +21,8 @@ const token = jwt.sign(data, secretToken);
     }
     fetch(url, config, async).then((response) => response.json()).then((data) => {
       jwt.verify(token, token1, async (decoded) => {
-        await console.log(decoded)
-        await console.log("funciono")
+        console.log(decoded)
+        console.log("funciono")
       })
       
     })
