@@ -64,7 +64,7 @@ export default function Lobby() {
         <header className="py-5 bg-light border-bottom mb-4">
             <div className="container">
                 <div className="text-center my-5">
-                    <h1 className="fw-bolder">Bienvenido NOMBRE DE ALUMNO</h1>
+                    <h1 className="fw-bolder">Bienvenido</h1>
                     <p className="lead mb-0">Accede a los archivos disponibles o sube el tuyo!</p>
                 </div>
             </div>
