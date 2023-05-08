@@ -8,7 +8,7 @@ import styles from '@/styles/Home.module.css'
 
 const secretToken = "M+Yidu6bWMk9GKkJopL0Sk+ri/RRcBFTF5DmxvbBZaJj+ouXBWzNeSb0qf+rG0GuLXqeD34vZ0RKH2LnS+0INw=="
 let url ="https://vercel-xi-smoky.vercel.app/"
-let url1 ="https://vercel-xi-smoky.vercel.app/getsession"
+let url2 ="https://middleware-aos.vercel.app/login"
 
 
 export default function Iniciar() {
@@ -32,15 +32,23 @@ export default function Iniciar() {
         }
     }
     fetch(url, config).then((response) => response.json()).then((data) => {
-       let config ={
+      let config2 ={
         method: "POST",
         headers: {
             Authorization: `Bearer ${data.token}`
         }
-    }
-    fetch(url1, config).then((response) => response.json()).then((data) => {
-        console.log(data)
-    })
+      } 
+
+      fetch(url2, config2).then((response) => response.json()).then((data2) => {
+        const decoded = jwt.verify(data2, secretToken)
+        if (decoded.aud == "authenticated"){
+          Router.push('/Lobby')
+          }else {
+          Router.push('/')
+          }
+
+        console.log(decoded)
+      })
     })
   }
   
