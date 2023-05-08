@@ -15,10 +15,12 @@ const token = jwt.sign(data, secretToken);
             Authorization: `Bearer ${token}`
         }
     }
-    fetch(url, config).then((response) => response.json()).then((data) => {
-      const decoded = jwt.verify(data, secretToken)
-      console.log(decoded)
-      console.log("funciono")
+    fetch(url, config, async).then((response) => response.json()).then((data) => {
+      jwt.verify(token, token1, async (decoded) => {
+        await console.log(decoded)
+        await console.log("funciono")
+      })
+      
     })
 
 
