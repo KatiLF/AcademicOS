@@ -3,15 +3,23 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import styles from '@/styles/Home.module.css'
 import Router from 'next/router'
 const jwt = require('jsonwebtoken');
-const { ChildComponent } = require ('pages/index.js')
+const secretToken = "M+Yidu6bWMk9GKkJopL0Sk+ri/RRcBFTF5DmxvbBZaJj+ouXBWzNeSb0qf+rG0GuLXqeD34vZ0RKH2LnS+0INw=="
 
-sesion = ChildComponent()
+data = "sesion actual"
+let url ="https://middle-two.vercel.app/"
+const token = jwt.sign(data, secretToken);
 
-console.log(sesion)
-console.log(session)
-console.log("funciono")
-console.log(session)
-
+    let config ={
+        method: "POST",
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+    fetch(url, config).then((response) => response.json()).then((data) => {
+      const decoded = jwt.verify(data, secretToken)
+      console.log(decoded)
+      console.log("funciono")
+    })
 
 
 export default function Lobby() {
