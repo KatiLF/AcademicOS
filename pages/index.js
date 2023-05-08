@@ -33,7 +33,7 @@ export default function Iniciar() {
         }
     }
     fetch(url2, config).then((response) => response.json()).then((data) => {
-      const decoded = jwt.verify(data, secretToken)
+      var decoded = jwt.verify(data, secretToken)
 
       if (decoded.data.aud == "authenticated"){
         
