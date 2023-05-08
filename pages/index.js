@@ -32,7 +32,7 @@ export default function Iniciar() {
     }
     fetch(url, config).then((response) => response.json()).then((data) => {
       const decoded = jwt.verify(data, secretToken)
-      if (decoded.data.aud == "authenticated"){
+      if (decoded == "authenticated"){
         
         Router.push('/Lobby')
         }else {
