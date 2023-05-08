@@ -9,23 +9,6 @@ let url ="https://middle-two.vercel.app/"
 
 
 export default function Lobby() {
-    const data = "sesion actual"
-
-    const token = jwt.sign(data, token1);
-
-    let config ={
-        method: "POST",
-        headers: {
-            Authorization: `Bearer ${token}`
-        }
-    }
-    fetch(url, config).then((response) => response.json()).then((data) => {
-      const decoded = jwt.verify(data, token1)
-      console.log(decoded)
-      
-    })
-        
-    console.log("aaaa")
 
   return (
     
