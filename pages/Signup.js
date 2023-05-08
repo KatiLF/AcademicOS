@@ -33,7 +33,7 @@ export default function Signup() {
       }
     }
     fetch(url, config).then((response) => response.json()).then((data) => {
-      console.log(data)
+      alert(data)
     })  
     
     
