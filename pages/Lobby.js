@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import styles from '@/styles/Home.module.css'
 import Router from 'next/router'
-import { decoded } from 'index.js'
+import { decoded } from '.'
 const jwt = require('jsonwebtoken');
 
 console.log(decoded)
