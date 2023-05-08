@@ -16,6 +16,19 @@ export default function Lobby() {
     let calculo = 'Calculo'
     let programacion = 'Programacion'
 
+    useEffect(() => {
+        //const sessionToken = Cookies.get('sesion');
+        if (document.cookie.indexOf('sesion') === -1) {
+          // La cookie no existe
+          console.log('la cookie no existe');
+          Router.push('/');
+        } else {
+          // La cookie existe
+          Router.push('/Lobby');
+          console.log('la cookie no existe');
+        }
+      }, []);
+      
     function archivos(x){
         let data = x
 
