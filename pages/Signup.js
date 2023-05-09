@@ -80,15 +80,9 @@ export default function Signup() {
                         </div>
 
 
-                        <button type="submit" class="btn btn-primary btn-block mb-4" onclick="redirectToPage('index.js')">
-                            Registrarse
-                          </button>
-
-                          <script>
-                            function redirectToPage(url) {
-                              window.location.href = url
-                            }
-                          </script>
+                        <button type="submit" className="btn btn-primary btn-block mb-4 ">
+                          Registrarse
+                        </button>
                       </form>
                   </div>
                 </div>
