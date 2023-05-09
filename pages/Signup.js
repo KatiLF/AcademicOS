@@ -80,7 +80,7 @@ export default function Signup() {
                         </div>
 
 
-                        <button type="submit" className="btn btn-primary btn-block mb-4 ">
+                        <button type="submit" className="btn btn-primary btn-block mb-4 " href=''>
                           Registrarse
                         </button>
                       </form>
