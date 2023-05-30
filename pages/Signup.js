@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Router from 'next/router'
 
-let url ="https://middle-two.vercel.app/registro"
+let url ="https://middleware-aos.vercel.app/registro"
 const secretToken = "M+Yidu6bWMk9GKkJopL0Sk+ri/RRcBFTF5DmxvbBZaJj+ouXBWzNeSb0qf+rG0GuLXqeD34vZ0RKH2LnS+0INw=="
 
 export default function Signup() {
