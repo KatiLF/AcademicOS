@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
-
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import Cookies from 'js-cookie'
+import Router from 'next/router'
 let url = "http://190.92.148.107:3000"
 
 const Home = () => {
@@ -7,9 +9,21 @@ const Home = () => {
     const [message, setMessage] = useState('');
     const [messageType, setMessageType] = useState('');
 
+    useEffect(() => {
+        Cookies.get('sesion')
+        if (document.cookie.indexOf('sesion') === -1) {
+            // La cookie no existe
+            console.log('No se estrablecio Conexion');
+            Router.push('/');
+        } else {
+            // La cookie existe
+            console.log('Existe Conexion');
+        }
+    }, []);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        const sender = Cookies.get('email');
         try {
             const new_url = url + '/send-email'
             const response = await fetch(new_url, {
@@ -38,10 +52,6 @@ const Home = () => {
         <div>
             <h1>Enviar correo electrónico</h1>
             <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Correo electrónico:</label>
-                    <input type="email" value={sender} onChange={(e) => setSender(e.target.value)} required />
-                </div>
                 <div>
                     <label>Mensaje:</label>
                     <textarea value={message} onChange={(e) => setMessage(e.target.value)} required></textarea>
