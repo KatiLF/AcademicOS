@@ -2,10 +2,14 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Cookies from 'js-cookie'
 import Router from 'next/router'
-let url = "http://190.92.148.107:3000"
+let url = "http://190.92.148.107:4040"
+//let url = "http://localhost:4040"
+
+
+const jwt = require('jsonwebtoken');
+const secretToken = "M+Yidu6bWMk9GKkJopL0Sk+ri/RRcBFTF5DmxvbBZaJj+ouXBWzNeSb0qf+rG0GuLXqeD34vZ0RKH2LnS+0INw=="
 
 const Home = () => {
-    const [sender, setSender] = useState('');
     const [message, setMessage] = useState('');
     const [messageType, setMessageType] = useState('');
 
@@ -23,21 +27,35 @@ const Home = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const sender = Cookies.get('email');
         try {
-            const new_url = url + '/send-email'
-            const response = await fetch(new_url, {
-                method: 'POST',
+
+            //Obtengo el email de la cookie
+            const sender = Cookies.get('email');
+
+            //Establesco las variables a enviar al servidor
+            let data = {
+                sender,
+                message,
+                messageType
+            }
+            //Encripto los datos a enviar
+            const token = jwt.sign(data, secretToken);
+            
+            //Establesco la estructura, lo voy a poner en el headers, en lugar del body
+            let config = {
+                method: "POST",
                 headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ sender, message, messageType })
-            });
+                    Authorization: `Bearer ${token}`
+                }
+            }
+
+            //Establesco nueva url
+            const new_url = url + '/send-email'
+            const response = await fetch(new_url, config);
 
             if (response.ok) {
                 console.log('Correo electrónico enviado correctamente.');
                 // Restablecer los campos del formulario después de enviar el correo electrónico
-                setSender('');
                 setMessage('');
                 setMessageType('');
             } else {

@@ -2,7 +2,9 @@ import { useState } from 'react'
 const jwt = require('jsonwebtoken');
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Router from 'next/router'
+import Cookies from 'js-cookie'
 
+//let url ="http://localhost:3000/registro"
 let url ="https://middleware-aos.vercel.app/files/registro"
 const secretToken = "M+Yidu6bWMk9GKkJopL0Sk+ri/RRcBFTF5DmxvbBZaJj+ouXBWzNeSb0qf+rG0GuLXqeD34vZ0RKH2LnS+0INw=="
 
@@ -33,12 +35,7 @@ export default function Signup() {
       
   })
     
-    
   }
-
-  
-
-
 
   return (
   <>
