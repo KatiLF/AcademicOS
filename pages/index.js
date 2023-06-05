@@ -5,10 +5,8 @@ const jwt = require('jsonwebtoken');
 import styles from '@/styles/Home.module.css'
 import Cookies from 'js-cookie'
 
-
-
 const secretToken = "M+Yidu6bWMk9GKkJopL0Sk+ri/RRcBFTF5DmxvbBZaJj+ouXBWzNeSb0qf+rG0GuLXqeD34vZ0RKH2LnS+0INw=="
-let url = "https://middleware-aos.vercel.app/files/"
+let url = "http://190.92.148.107:4041"
 
 
 export default function Iniciar() {

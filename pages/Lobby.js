@@ -4,12 +4,10 @@ import styles from '@/styles/Home.module.css'
 import Link from 'next/link';
 import Router from 'next/router'
 import Cookies from 'js-cookie'
+//import { url } from 'inspector';
 
-const jwt = require('jsonwebtoken');
-const secretToken = "M+Yidu6bWMk9GKkJopL0Sk+ri/RRcBFTF5DmxvbBZaJj+ouXBWzNeSb0qf+rG0GuLXqeD34vZ0RKH2LnS+0INw=="
-let url ="https://middleware-aos.vercel.app/files/etiquetas"
-//let url = "http://localhost:3000/etiquetas"
-
+//let url ="https://middleware-aos.vercel.app/files/etiquetas"
+let url = "http://190.92.148.107:4041/etiquetas"
 
 export default function Lobby() {
 
@@ -90,7 +88,8 @@ export default function Lobby() {
     // Actualizar un registro, se ejecuta cuando se envía el formulario para actualizar un registro existente
     function updateEtiqueta(event) {
         event.preventDefault();
-        const new_url = url + `${updateId}`
+
+        const new_url = url + `/${updateId}`
         fetch(new_url, {
             method: 'PUT',
             headers: {
@@ -124,7 +123,7 @@ export default function Lobby() {
 
     // Eliminar un registro
     function deleteEtiqueta(id) {
-        const new_url = url + `${id}`
+        const new_url = url + `/${id}`
         fetch(new_url, {
             method: 'DELETE',
         })
@@ -147,9 +146,12 @@ export default function Lobby() {
                             <li className="nav-item"><a className="nav-link" href="Lobby">Inicio</a></li>
                             <li className="nav-item"><a className="nav-link" href="Recursos">Recursos</a></li>
                             <li className="nav-item"><a className="nav-link" href="acerca">Acerca de mi</a></li>
+                            <li className="nav-item">
+                                <Link className="nav-link" href={`contacto`}>
+                                    Contacto
+                                </Link>
+                            </li>
                             <li className="nav-item"><a className="nav-link" href="Lobby" onClick={() => Cookies.remove('sesion')}>Cerrar Sesión</a></li>
-
-
                         </ul>
                     </div>
                 </div>
@@ -165,10 +167,10 @@ export default function Lobby() {
                 </div>
             </header>
 
-            <div className="container">
-                <div>
+            <div className="container " >
+                <div >
                     {/* Botón que permite alternar la visibilidad del formulario */}
-                    <button onClick={() => setShowForm(!showForm)}>
+                    <button type="submit" className="btn btn-secondary" onClick={() => setShowForm(!showForm)}>
                         {showForm ? 'Ocultar' : 'Mostrar'}
                     </button>
 
@@ -177,9 +179,10 @@ export default function Lobby() {
                     {showForm && (
                         //Si updateID(un registro exitente) esta disponible ejecutara la updateEtiqueta, sino ejecutara createEtiqueta
                         <form onSubmit={updateId ? updateEtiqueta : createEtiqueta}>
-                            <input
+                            <input className="input-group-prepend"
                                 type="text"
                                 name="etiqueta"
+                                placeholder="etiqueta"
                                 value={formValues.etiqueta}
                                 onChange={handleFormChange}
                             />
@@ -188,34 +191,37 @@ export default function Lobby() {
                                 name="description"
                                 value={formValues.description}
                                 onChange={handleFormChange}
+                                placeholder="descripcion"
                             />
                             {/* Si updateID(un registro exitente) esta disponible mostrar 'Actualizar Registro sino mostrara 'Crear Registro' */}
-                            <button type="submit">{updateId ? 'Actualizar Registro' : 'Crear Registro'}</button>
+                            <button type="submit" className="btn btn-secondary">{updateId ? 'Actualizar Registro' : 'Crear Registro'}</button>
                         </form>
                     )}
+                </div>
+                <div className="col-12 d-flex justify-content-center align-items-center">
 
-                    <table>
+                    <table className="table table-bordered">
                         <thead>
                             <tr>
-                                <th>Nombre Etique</th>
-                                <th>Description</th>
-                                <th>Link</th>
-                                <th>Acciones</th>
+                                <th className="square-cell">Nombre Etiqueta</th>
+                                <th className="square-cell">Description</th>
+                                <th className="square-cell">Link</th>
+                                <th className="square-cell">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             {data.map((etiqueta) => (
                                 <tr key={etiqueta.id}>
-                                    <td>{etiqueta.etiqueta}</td>
-                                    <td>{etiqueta.description}</td>
+                                    <td className="square-cell">{etiqueta.etiqueta}</td>
+                                    <td className="square-cell">{etiqueta.description}</td>
                                     <td>
-                                        <Link href={`/etiqueta/${etiqueta.id}`}>
+                                        <Link className="btn btn-primary" role="button" href={`/etiqueta/${etiqueta.id}`}>
                                             {etiqueta.etiqueta}
                                         </Link>
                                     </td>
-                                    <td>
-                                        <button onClick={() => setUpdateFormValues(etiqueta)}>Editar</button>
-                                        <button onClick={() => deleteEtiqueta(etiqueta.id)}>Eliminar</button>
+                                    <td className="square-cell">
+                                        <button type="button" className="btn btn-success" onClick={() => setUpdateFormValues(etiqueta)}>Editar</button>
+                                        <button type="button" className="btn btn-danger" onClick={() => deleteEtiqueta(etiqueta.id)}>Eliminar</button>
                                     </td>
                                 </tr>
                             ))}
@@ -229,7 +235,6 @@ export default function Lobby() {
             <footer className="py-5 bg-dark">
                 <div className="container"><p className="m-0 text-center text-white">Copyright &copy; Arica, Chile</p></div>
             </footer>
-
 
         </>
     )
