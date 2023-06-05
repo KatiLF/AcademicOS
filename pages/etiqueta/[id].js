@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Cookies from 'js-cookie'
 import Router from 'next/router'
+import Link from 'next/link';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 export default function MyTable() {
@@ -115,11 +116,22 @@ export default function MyTable() {
                             <li className="nav-item"><a className="nav-link" href="Lobby">Inicio</a></li>
                             <li className="nav-item"><a className="nav-link" href="Recursos">Recursos</a></li>
                             <li className="nav-item"><a className="nav-link" href="acerca">Acerca de mi</a></li>
+                            <li className='nav-item'>
+                                <Link className='nav-link' href={'https://chatp2p.vercel.app'}>
+                                    Chat
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" href={`contacto`}>
+                                    Contacto
+                                </Link>
+                            </li>
                             <li className="nav-item"><a className="nav-link" href="Lobby" onClick={() => Cookies.remove('sesion')}>Cerrar Sesión</a></li>
                         </ul>
                     </div>
                 </div>
             </nav>
+
 
             <header className="py-5 bg-light border-bottom mb-4">
                 <div className="container">
