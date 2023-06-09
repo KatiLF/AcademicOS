@@ -4,9 +4,9 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Router from 'next/router'
 import Cookies from 'js-cookie'
 
-//let url ="http://localhost:3000/registro"
-let url = "http://190.92.148.107:4041/registro"
-const secretToken = "M+Yidu6bWMk9GKkJopL0Sk+ri/RRcBFTF5DmxvbBZaJj+ouXBWzNeSb0qf+rG0GuLXqeD34vZ0RKH2LnS+0INw=="
+let url = process.env.NEXT_PUBLIC_MIDDLE_URL + "/registro"
+
+const secretToken = process.env.NEXT_PUBLIC_SECRET_TOKEN
 
 export default function Signup() {
   const [email, setEmail] = useState('')
@@ -19,7 +19,6 @@ export default function Signup() {
       email: email,
       password: password
     }
-    console.log(data)
 
     const token = jwt.sign(data, secretToken);
 
@@ -32,7 +31,7 @@ export default function Signup() {
     fetch(url, config).then((response) => response.json()).then((data) => {
       Cookies.set('email', email, { expires: 7 })
       Router.push('/')
-    })
+    }).catch((error) => console.error('Error al intentar registrarse:', error.message));
 
   }
 
