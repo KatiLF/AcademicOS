@@ -5,9 +5,8 @@ const jwt = require('jsonwebtoken');
 import styles from '@/styles/Home.module.css'
 import Cookies from 'js-cookie'
 
-const secretToken = "M+Yidu6bWMk9GKkJopL0Sk+ri/RRcBFTF5DmxvbBZaJj+ouXBWzNeSb0qf+rG0GuLXqeD34vZ0RKH2LnS+0INw=="
-let url = "http://190.92.148.107:4041"
-
+const secretToken = process.env.NEXT_PUBLIC_SECRET_TOKEN
+let url = process.env.NEXT_PUBLIC_MIDDLE_URL
 
 export default function Iniciar() {
   const [email, setUsername] = useState('')
@@ -29,30 +28,32 @@ export default function Iniciar() {
         Authorization: `Bearer ${token}`
       }
     }
-    fetch(url, config).then((response) => response.json()).then((data) => {
-      console.log(data)
-      const decoded = jwt.verify(data, secretToken)
-      if (decoded.data.session.user.aud == "authenticated") {
-        console.log(decoded)
-        Cookies.set('sesion', decoded.data.session.access_token, { expires: 7 })
-        Cookies.set('email', email, { expires: 7 })
-        Router.push('/Lobby')
-      } else {
-        Router.push('/')
-      }
-    })
+    fetch(url, config)
+      .then((response) => response.json())
+      .then((data) => {
+        const decoded = jwt.verify(data, secretToken);
+
+        if (decoded.result.data.session.user.aud == "authenticated") {
+          Cookies.set('sesion', decoded.result.data.session.access_token, { expires: 7 });
+          Cookies.set('usuario_id', decoded.id, { expires: 7 });
+          console.log('Ha ingresado correctamente');
+          Router.push('/Lobby');
+        } else {
+          Router.push('/');
+        }
+      })
+      .catch((error) => console.error('Error al intentar ingresar:', error.message));
+
   }
   useEffect(() => {
-    const sessionToken = Cookies.get('sesion');
-    console.log('Este es el sesion token: ', sessionToken);
     if (document.cookie.indexOf('sesion') === -1) {
       // La cookie no existe
-      console.log('la cookie no existe');
+      console.log('La sesion no Existe');
       Router.push('/');
     } else {
       // La cookie existe
       Router.push('/Lobby');
-      console.log('la cookie no existe');
+      console.log('La sesion existe existe');
     }
   }, []);
 
