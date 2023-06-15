@@ -56,7 +56,6 @@ const Home = () => {
     return (
 
         <div>
-
             <Navbar />
 
             <header className="py-5 bg-light border-bottom mb-4">

@@ -53,7 +53,6 @@ export default function Lobby() {
 
     const handleFilter = async () => {
         try {
-            console.log({categoria})
             //Mando por el url las variables, ya que por defecto son GET, no se puede construir con GET
             const new_url = process.env.NEXT_PUBLIC_MIDDLE_URL + `/filtrar?etiqueta=${etiqueta}&categoria=${categoria}`;
             const response = await fetch(new_url);

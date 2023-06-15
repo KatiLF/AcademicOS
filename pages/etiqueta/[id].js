@@ -53,7 +53,6 @@ export default function MyTable() {
             const response = await fetch(new_url);
             const data = await response.json();
             setData(data);
-
         } catch (error) {
             console.error(error);
         }

@@ -5,7 +5,7 @@ import Cookies from 'js-cookie';
 
 const Navbar = () => {
     useEffect(() => {
-        if (typeof window !== 'undefined' && document.cookie.indexOf('sesion') === 1) {
+        if (typeof window !== 'undefined' && document.cookie.indexOf('sesion') === -1) {
             console.log('No se estableció conexión');
             Router.push('/');
         } else {
