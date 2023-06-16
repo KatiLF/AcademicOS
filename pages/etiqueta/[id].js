@@ -187,6 +187,7 @@ export default function MyTable() {
 
             if (response.ok) {
                 console.log('Archivo actualizado exitosamente');
+                setFormato('');
                 fetchArchivos();
             } else {
                 console.error('Error creating archivo:', response.status);
